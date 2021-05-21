@@ -25,6 +25,7 @@ import io
 import colorsys
 import array
 import ctypes as ct
+import ctypes.util as ctu
 from weakref import \
     WeakKeyDictionary, \
     WeakValueDictionary
@@ -55,6 +56,12 @@ LIBNAME = \
                 "cairo" : "libcairo.so.12",
                 "freetype" : "libfreetype.so.28",
                 "fontconfig" : "libfontconfig.so.11",
+            },
+        "darwin" :
+            {
+                "cairo" : ctu.find_library("cairo"),
+                "freetype" : ctu.find_library("freetype"),
+                "fontconfig" : ctu.find_library("fontconfig"),
             },
     }[sys.platform]
 
